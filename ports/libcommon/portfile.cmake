@@ -1,0 +1,33 @@
+vcpkg_from_github(
+    OUT_SOURCE_PATH SOURCE_PATH
+    REPO buracchi/common
+    REF 15fb8645427a7e25a4412cc36107bcddaaa8f7bf
+    SHA512 e64f0215c84859a564909a4b4877f3dcbe83c5df8a6490caac32a3cd26996efc7d43fb3f9539a69b836e67a2162eca2f4c113bed6f2494338333f75cf3b734a1
+    HEAD_REF master
+)
+
+set(LIBCOMMON_BUILD_TESTS OFF)
+
+#vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
+#  FEATURES
+#    argparser      LIBCOMMON_ENABLE_ARGPARSER
+#    concurrency    LIBCOMMON_ENABLE_CONCURRENCY
+#    networking     LIBCOMMON_ENABLE_NETWORKING
+#  INVERTED_FEATURES
+#)
+
+vcpkg_cmake_configure(
+    SOURCE_PATH ${SOURCE_PATH}
+    OPTIONS ${FEATURE_OPTIONS}
+        -DLIBCOMMON_BUILD_TESTS=${LIBCOMMON_BUILD_TESTS}
+)
+
+vcpkg_cmake_install()
+#vcpkg_cmake_config_fixup()
+#
+#file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
+#
+#file(
+#    INSTALL "${SOURCE_PATH}/LICENSE"
+#    DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}"
+#    RENAME copyright)
