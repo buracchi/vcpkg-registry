@@ -15,5 +15,8 @@
             "name": "libevent",
             "platform": "!windows"
         }
+    ],
+    "overrides": [
+      { "name": "libevent", "version": "2.1.12#7" }
     ]
 }
