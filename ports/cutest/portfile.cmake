@@ -1,0 +1,17 @@
+vcpkg_from_github(
+    OUT_SOURCE_PATH SOURCE_PATH
+    REPO buracchi/cutest
+    REF 327a135878d51266c701ca2550abb960024bb722
+    SHA512 54b1bb51086836910f201f85bdce15c12c16984a7ecbd56f6d48d66cec8e7f664b62e4eeb56ba1bd878161890e016a626082a24573596aae67c98ea1efd0cd07
+    HEAD_REF master
+)
+
+set(CUTEST_BUILD_TESTS OFF)
+
+vcpkg_cmake_configure(
+    SOURCE_PATH ${SOURCE_PATH}
+    OPTIONS ${FEATURE_OPTIONS}
+        -DCUTEST_BUILD_TESTS=${CUTEST_BUILD_TESTS}
+)
+
+vcpkg_cmake_install()
