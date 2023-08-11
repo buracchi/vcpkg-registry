@@ -18,6 +18,7 @@ if [ -z "${REPO_PORT_MAP[$REPOSITORY]}" ]; then
 fi
 
 PORT_NAME="${REPO_PORT_MAP[$REPOSITORY]}"
+PORT_NAME_VERSION_FOLDER=$(echo "$PORT_NAME" | cut -c1 | tr '[:upper:]' '[:lower:]')-
 
 mkdir -p ./tmp
 SHA512=$(
@@ -31,6 +32,6 @@ sed -i 's/\(\SHA512 \).*/\1'"$SHA512"'/g' ./ports/$PORT_NAME/portfile.cmake
 git diff -w | git apply --cached --ignore-whitespace
 git commit -m "Update"
 GIT_TREE=$(git rev-parse HEAD:ports/$PORT_NAME)
-sed -i 's/\("git-tree": \).*/\1'"\"$GIT_TREE\""'/g' ./versions/l-/$PORT_NAME.json
+sed -i 's/\("git-tree": \).*/\1'"\"$GIT_TREE\""'/g' ./versions/$PORT_NAME_VERSION_FOLDER/$PORT_NAME.json
 git diff -w | git apply --cached --ignore-whitespace
 git commit --amend --no-edit
