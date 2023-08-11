@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/bin/bash
+
+declare -A REPO_PORT_MAP
+REPO_PORT_MAP["common"]="libcommon"
+REPO_PORT_MAP["cutest"]="cutest"
 
 if [ "$#" -ne 2 ]; then
     echo "Illegal number of parameters"
@@ -7,7 +11,14 @@ fi
 
 REPOSITORY=$1
 COMMIT=$2
-PORT_NAME="libcommon"
+
+if [ -z "${REPO_PORT_MAP[$REPOSITORY]}" ]; then
+    echo "Unknown repository: $REPOSITORY"
+    exit 1
+fi
+
+PORT_NAME="${REPO_PORT_MAP[$REPOSITORY]}"
+
 mkdir -p ./tmp
 SHA512=$(
     cd ./tmp;
