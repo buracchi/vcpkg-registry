@@ -1,0 +1,17 @@
+vcpkg_from_github(
+    OUT_SOURCE_PATH SOURCE_PATH
+    REPO buracchi/argparser
+    REF afe3cd7562cd2cc35f402807501031576754d05f
+    SHA512 316d387f7c066deaa110dcf7b6920a90cb73554a9f98dca8d2035ad3f1c6d71252c15d6829db785f3364486338d5b32e76c99a997b4ec54ae38b4827cfa9159f
+    HEAD_REF main
+)
+
+set(ARGPARSER_BUILD_TESTS OFF)
+
+vcpkg_cmake_configure(
+    SOURCE_PATH ${SOURCE_PATH}
+    OPTIONS ${FEATURE_OPTIONS}
+        -DARGPARSER_BUILD_TESTS=${CUTEST_BUILD_TESTS}
+)
+
+vcpkg_cmake_install()
