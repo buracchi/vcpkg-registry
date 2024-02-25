@@ -1,6 +1,7 @@
 #!/bin/bash
 
 declare -A REPO_PORT_MAP
+REPO_PORT_MAP["argparser"]="argparser"
 REPO_PORT_MAP["common"]="libcommon"
 REPO_PORT_MAP["cutest"]="cutest"
 
