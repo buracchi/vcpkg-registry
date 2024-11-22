@@ -1,8 +1,6 @@
 #!/bin/bash
 
 declare -A REPO_PORT_MAP
-REPO_PORT_MAP["argparser"]="argparser"
-REPO_PORT_MAP["common"]="libcommon"
 REPO_PORT_MAP["cutest"]="cutest"
 
 if [ "$#" -ne 2 ]; then
@@ -36,3 +34,4 @@ GIT_TREE=$(git rev-parse HEAD:ports/$PORT_NAME)
 sed -i 's/\("git-tree": \).*/\1'"\"$GIT_TREE\""'/g' ./versions/$PORT_NAME_VERSION_FOLDER/$PORT_NAME.json
 git diff -w | git apply --cached --ignore-whitespace
 git commit --amend --no-edit
+

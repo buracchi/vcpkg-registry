@@ -1,7 +1,5 @@
 {
     "default": {
-        "argparser": { "baseline": "0.1", "port-version": 0 },
-        "libcommon": { "baseline": "0.1", "port-version": 0 },
         "cutest": { "baseline": "0.1", "port-version": 0 }
     }
 }
